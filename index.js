@@ -56,4 +56,3 @@ app.get("/showUser/:uid",(req,res)=>{
 
 const port=3000
 app.listen(port,()=>console.log(`server s running at ${port}`))
-
