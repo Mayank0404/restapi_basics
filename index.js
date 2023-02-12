@@ -8,6 +8,12 @@ const middleware=(req,res,next)=>{
 
 app.use(middleware)
 
+app.get("/",middleware,(req,res)=>{
+    res.send("hi this is GET REQUEST")
+})
+app.get("/test",middleware,(req,res)=>{
+    res.send("hi this is GET REQUEST")
+})
 
 app.post("/",(req,res)=>{
     res.send("hi this is post request")
