@@ -83,6 +83,24 @@ app.delete("/deleteuser/:Uid",(req,res)=>{
     }
 })  
 
+app.put("/updateuser/:id",(req,res)=>{
+    
+    const found=members.some(member => member.id===parseInt(req.params.id)) 
+    console.log(found)
+    if(found){
+     const updatedmember=req.body
+     members.forEach(member =>{
+        if(member.id === parseInt(req.params.id)){
+            member.name=updatedmember.name
+            member.email=updatedmember.email
+        }
+     })
+     console.log(members) 
+    }else{
+        res.status(400).json({msg:`no id found with ${req.params.id}`})
+    }
+})
+
 
 const port=3000
 app.listen(port,()=>console.log(`server s running at ${port}`))
