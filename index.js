@@ -72,6 +72,17 @@ res.status(200).json(members)
 
 })
 
+app.delete("/deleteuser/:Uid",(req,res)=>{
+    const id=parseInt(req.params.Uid)
+    const found=members.some(member => member.id===id)
+    if(found){
+        const results=members.filter(member => member.id !== id)
+        res.status(200).json(results)
+    }else{
+        res.status(400).json({msg:`no id found with ${id}`})
+    }
+})  
+
 
 const port=3000
 app.listen(port,()=>console.log(`server s running at ${port}`))
